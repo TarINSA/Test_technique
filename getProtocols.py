@@ -8,10 +8,10 @@ def getFiles():
     allFiles = filesPCAP + filesPCAPNG
     return allFiles
 
-def readPacket(packet):
+def readPacket(file):
     listOutput=[]
     #on constuit la commande pour lire les 50000 premiers paquets du fichier et ne retenir que les protocoles de ces paquets
-    cmd = 'tshark -r '+packet+' -c 50000 -T fields -e frame.protocols'
+    cmd = 'tshark -r '+file+' -c 50000 -T fields -e frame.protocols'
     #on lance la commande
     p = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding='ascii')
     output,error=p.communicate()
@@ -22,7 +22,7 @@ def readPacket(packet):
                 listOutput+=[line]
         return listOutput
     if error:
-        print("Une erreur s'est produite lors de la lecture du paquet : "+packet)
+        print("Une erreur s'est produite lors de la lecture du fichier : "+file)
         return []
 
 def main():
