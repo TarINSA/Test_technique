@@ -19,7 +19,7 @@ def readPacket(file):
         output=output.split('\n') #on decoupe le resultat grace aux fins de lignes
         for line in output:
             if line!='' and line not in listOutput: #on enleve les lignes vides et les protocoles deja presents
-                listOutput+=[line]
+                listOutput.append(line)
         return listOutput
     if error:
         print("Une erreur s'est produite lors de la lecture du fichier : "+file)
@@ -34,7 +34,8 @@ def main():
                 listProtocol=readPacket(file)
                 if listProtocol!=[]:
                     #on ecrit les resultats dans le fichier listeProtocoles.csv en commencant par le nom du fichier suivi des protocoles presents dans le fichier (separes par des ,)
-                    fileWriter.writerow([file]+listProtocol)
+                    listProtocol.insert(0,file)
+                    fileWriter.writerow(listProtocol)
     except IOError:
         print("Erreur lors de l'ouverture du fichier")
 
