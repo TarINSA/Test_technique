@@ -1,4 +1,6 @@
 Pour lancer le programme, il suffit de placer le fichier getProtocols.py dans le dossier à analyser, puis lancer la commande "python3 getProtocols.py".
 
 Le programme va alors analyser le dossier courant puis écrire les résultats dans le fichier "listeProtocoles.csv" (fichier créé si inexistant) sous la forme : nomFichier,protocole1,protocole2,[...]
+A chaque fois il efface le fichier et réécrit dedans, pour gérer le cas où des fichiers sont ajoutés/supprimés/mis à jour.
+
 Le programme analyse uniquement les fichiers .pcap et .pcapng et gère le cas où les fichiers ont des noms qui interfèrent avec la commande, et affiche alors une erreur pour le fichier concerné.
